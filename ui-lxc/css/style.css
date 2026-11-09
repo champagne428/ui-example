@@ -1,0 +1,807 @@
+/* ============================================
+   Agent 视界 · 2026 互联网 Agent 行业峰会
+   深色科技风 / 翻页式邀请函 H5
+   ============================================ */
+
+:root {
+  --color-bg: #0a0e1a;
+  --color-primary: #4f6df5;
+  --color-violet: #9b5cf6;
+  --color-cyan: #5ce1e6;
+  --color-text: #eef1fa;
+  --color-text-dim: rgba(238, 241, 250, 0.62);
+  --color-text-faint: rgba(238, 241, 250, 0.38);
+  --gradient-brand: linear-gradient(120deg, var(--color-primary), var(--color-violet));
+  --font-main: "PingFang SC", "HarmonyOS Sans SC", "Source Han Sans SC",
+    "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-bg);
+  color: var(--color-text);
+  color-scheme: dark;
+  font-family: var(--font-main);
+  touch-action: manipulation;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+li { list-style: none; }
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- 翻页容器 ---------- */
+
+.deck {
+  height: 100%;
+  container-type: inline-size;
+  transition: transform 0.9s var(--ease-out);
+  will-change: transform;
+}
+
+.screen {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.screen-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.06);
+  transition: transform 1.6s var(--ease-out), opacity 1.2s ease;
+  opacity: 0.55;
+}
+
+.screen.active .screen-bg {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* 背景压暗遮罩，保证文字可读 */
+.screen-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 14, 26, 0.42) 0%,
+    rgba(10, 14, 26, 0.18) 38%,
+    rgba(10, 14, 26, 0.66) 100%
+  );
+}
+
+.screen-body {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 clamp(24px, 7vw, 64px);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ---------- 入场动画 ---------- */
+
+.anim {
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity 0.9s var(--ease-out) var(--d, 0s),
+    transform 0.9s var(--ease-out) var(--d, 0s);
+}
+
+.screen.active .anim {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- 通用排版 ---------- */
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.42em;
+  color: var(--color-cyan);
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-size: clamp(30px, 8.6vw, 44px);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-wrap: balance;
+  margin-bottom: clamp(26px, 6vh, 44px);
+  background: linear-gradient(120deg, #fff 30%, #b9c4ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---------- 屏 1 · 封面 ---------- */
+
+.screen-cover .screen-body {
+  justify-content: flex-start;
+  padding-top: 20vh;
+}
+
+.cover-tag {
+  font-size: 12px;
+  letter-spacing: 0.34em;
+  white-space: nowrap;
+  color: var(--color-text-dim);
+  margin-bottom: 22px;
+}
+
+.cover-title {
+  font-size: 64px;
+  font-size: clamp(56px, 20cqw, 76px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #ffffff 20%, #8fa4ff 60%, var(--color-violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 28px rgba(79, 109, 245, 0.45));
+}
+
+.cover-divider {
+  width: 56px;
+  height: 3px;
+  margin: 30px 0 20px;
+  background: var(--gradient-brand);
+  border-radius: 2px;
+  box-shadow: 0 0 16px rgba(79, 109, 245, 0.8);
+}
+
+.cover-sub {
+  font-size: 18px;
+  font-size: clamp(16px, 4.6cqw, 20px);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  color: var(--color-text);
+}
+
+.cover-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  color: var(--color-text-dim);
+}
+
+.meta-sep {
+  width: 1px;
+  height: 12px;
+  background: var(--color-text-faint);
+}
+
+/* 上滑引导 */
+.scroll-hint {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: calc(28px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.scroll-hint-text {
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  color: var(--color-text-dim);
+}
+
+.scroll-hint-arrow {
+  width: 18px;
+  height: 18px;
+  border-left: 2px solid var(--color-cyan);
+  border-top: 2px solid var(--color-cyan);
+  transform: rotate(45deg);
+  animation: hint-float 1.6s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(92, 225, 230, 0.9));
+}
+
+@keyframes hint-float {
+  0%, 100% { transform: rotate(45deg) translate(0, 0); opacity: 1; }
+  50% { transform: rotate(45deg) translate(-6px, 6px); opacity: 0.35; }
+}
+
+/* ---------- 屏 2 · 峰会背景 ---------- */
+
+.keyword-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(22px, 4.5vh, 34px);
+}
+
+.keyword {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.keyword-no {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-cyan);
+  border: 1px solid rgba(92, 225, 230, 0.35);
+  border-radius: 999px;
+  padding: 5px 11px;
+  margin-top: 3px;
+  white-space: nowrap;
+  background: rgba(92, 225, 230, 0.06);
+}
+
+.keyword-text {
+  min-width: 0;
+}
+
+.keyword-text h3 {
+  font-size: clamp(19px, 5vw, 24px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.keyword-text p {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--color-text-dim);
+}
+
+/* ---------- 屏 4 · 大会议程 ---------- */
+
+.agenda-banner {
+  height: clamp(88px, 15vh, 132px);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: clamp(22px, 4.5vh, 40px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2.6vh, 22px);
+  padding-left: 74px;
+}
+
+/* 时间轴竖线 */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 56px;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(79, 109, 245, 0.75) 12%,
+    rgba(155, 92, 246, 0.75) 88%,
+    transparent
+  );
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+.timeline-time {
+  position: absolute;
+  left: -74px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  text-align: right;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-cyan);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 时间轴光点 */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -21px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  box-shadow: 0 0 10px 2px rgba(79, 109, 245, 0.85);
+}
+
+.timeline-card {
+  flex: 1;
+  padding: 13px 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.timeline-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.timeline-card p {
+  font-size: 12.5px;
+  color: var(--color-text-dim);
+  line-height: 1.6;
+}
+
+/* ---------- 屏 4 · 峰会亮点 ---------- */
+
+.screen-highlights .screen-body {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.highlight-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2.6vh, 22px);
+}
+
+.highlight-card {
+  display: grid;
+  grid-template-columns: clamp(84px, 23vw, 104px) 1fr;
+  column-gap: 16px;
+  align-items: center;
+  padding: 13px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.highlight-thumb {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.highlight-text {
+  min-width: 0;
+}
+
+.highlight-text h3 {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 5px;
+}
+
+.highlight-text p {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--color-text-dim);
+  margin-bottom: 8px;
+}
+
+/* ---------- 屏 5 · 参会信息 ---------- */
+
+.info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2.6vh, 22px);
+}
+
+.info-card {
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.info-label {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: var(--color-cyan);
+  margin-bottom: 10px;
+}
+
+.info-value {
+  font-size: clamp(17px, 4.8vw, 21px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  margin-bottom: 5px;
+}
+
+.info-extra {
+  font-size: 13px;
+  color: var(--color-text-dim);
+  letter-spacing: 0.04em;
+}
+
+/* ---------- 屏 6 · 尾页 CTA ---------- */
+
+.screen-cta .screen-body {
+  align-items: center;
+  text-align: center;
+  justify-content: flex-start;
+  padding-top: 13vh;
+}
+
+.cta-title {
+  font-size: clamp(34px, 9.5vw, 52px);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #ffffff 25%, #9db1ff 65%, var(--color-violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 24px rgba(79, 109, 245, 0.5));
+}
+
+.cta-sub {
+  margin-top: 14px;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  color: var(--color-text-dim);
+}
+
+.cta-button {
+  position: relative;
+  margin-top: clamp(30px, 6vh, 52px);
+  padding: 16px 62px;
+  font-size: 17px;
+  font-weight: 700;
+  font-family: inherit;
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
+  color: #fff;
+  background: var(--gradient-brand);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  animation: cta-breathe 2.4s ease-in-out infinite;
+}
+
+.cta-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 34px rgba(79, 109, 245, 0.9), 0 0 90px rgba(155, 92, 246, 0.45);
+  animation: cta-glow 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes cta-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+@keyframes cta-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.qr-block {
+  margin-top: clamp(30px, 6vh, 52px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.qr-placeholder {
+  width: clamp(96px, 26vw, 124px);
+  aspect-ratio: 1;
+  border-radius: 12px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)) padding-box,
+    var(--gradient-brand) border-box;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+/* 二维码占位纹理 */
+.qr-placeholder::after {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  background-image:
+    repeating-linear-gradient(0deg, #0a0e1a 0 4px, transparent 4px 8px),
+    repeating-linear-gradient(90deg, #0a0e1a 0 4px, transparent 4px 8px);
+  opacity: 0.75;
+}
+
+.qr-text {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--color-text-dim);
+}
+
+.organizer {
+  margin-top: auto;
+  margin-bottom: calc(26px + env(safe-area-inset-bottom));
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  color: var(--color-text-faint);
+}
+
+/* ---------- 进度指示器 ---------- */
+
+.indicator {
+  position: fixed;
+  z-index: 10;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+  cursor: pointer;
+  transition: height 0.4s var(--ease-out), background 0.4s ease;
+}
+
+.dot.active {
+  height: 22px;
+  background: var(--gradient-brand);
+  box-shadow: 0 0 8px rgba(79, 109, 245, 0.9);
+}
+
+.dot:focus-visible,
+.cta-button:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 3px;
+}
+
+/* ---------- 宽屏适配 ---------- */
+
+@media (min-width: 768px) {
+  body {
+    display: flex;
+    justify-content: center;
+    background: #05070d;
+  }
+
+  .deck {
+    width: 420px;
+    box-shadow: 0 0 80px rgba(79, 109, 245, 0.18);
+  }
+
+  .indicator {
+    right: calc(50% - 230px);
+  }
+}
+
+/* ---------- 屏 1 补充 · 封面徽章 ---------- */
+
+.cover-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.badge {
+  font-size: 11.5px;
+  letter-spacing: 0.12em;
+  color: var(--color-text-dim);
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ---------- 屏 3 · 行业数据 ---------- */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.stat-card {
+  padding: 20px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.stat-num {
+  font-size: clamp(26px, 7.5vw, 34px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(120deg, #fff 20%, #8fa4ff 70%, var(--color-violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--color-text-dim);
+}
+
+.stats-source {
+  margin-top: 18px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--color-text-faint);
+}
+
+/* ---------- 议程补充 ---------- */
+
+.title-note {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--color-cyan);
+  -webkit-text-fill-color: var(--color-cyan);
+  margin-left: 10px;
+  vertical-align: 6px;
+}
+
+/* ---------- 亮点标签 ---------- */
+
+.tag-row {
+  display: flex;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  color: var(--color-cyan);
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(92, 225, 230, 0.3);
+  background: rgba(92, 225, 230, 0.06);
+}
+
+/* ---------- 屏 7 · 票务表 ---------- */
+
+.ticket-table {
+  margin-top: clamp(16px, 3vh, 26px);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.ticket-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1.9fr;
+  padding: 12px 18px;
+  font-size: 13px;
+  color: var(--color-text-dim);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ticket-row span:first-child {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.ticket-head {
+  border-top: none;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--color-text-faint);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.ticket-head span:first-child {
+  color: var(--color-text-faint);
+  font-weight: 400;
+}
+
+.ticket-price {
+  color: var(--color-cyan) !important;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 屏 8 补充 · 联系方式 ---------- */
+
+.cta-contact {
+  margin-top: clamp(18px, 3.5vh, 30px);
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.06em;
+  color: var(--color-text-dim);
+}
+
+.cta-contact p:first-child {
+  color: var(--color-cyan);
+}
+
+/* ---------- 动效降级 ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .deck {
+    transition: none;
+  }
+
+  .anim {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .screen-bg,
+  .scroll-hint-arrow,
+  .cta-button,
+  .cta-button::after {
+    transition: none;
+    animation: none;
+  }
+
+  .screen-bg {
+    opacity: 1;
+    transform: none;
+  }
+}

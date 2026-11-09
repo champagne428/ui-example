@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0e1a">
+  <title>Agent 视界 · 2026 互联网 Agent 行业峰会</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 进度指示器(由 JS 根据屏数生成) -->
+  <nav class="indicator" id="indicator" aria-label="页面导航"></nav>
+
+  <main class="deck" id="deck">
+
+    <!-- 屏 1 · 封面 -->
+    <section class="screen screen-cover">
+      <div class="screen-bg" aria-hidden="true" style="background-image:url('images/cover-brain.png')"></div>
+      <div class="screen-body">
+        <p class="cover-tag anim" style="--d:.1s">2026 INTERNET AGENT SUMMIT</p>
+        <h1 class="cover-title anim" style="--d:.25s">Agent<br>视界</h1>
+        <div class="cover-divider anim" style="--d:.4s"></div>
+        <p class="cover-sub anim" style="--d:.5s">2026 互联网 Agent 行业峰会</p>
+        <p class="cover-meta anim" style="--d:.62s">
+          <span>2026.7.11-12</span>
+          <span class="meta-sep"></span>
+          <span>上海 · 西岸艺术中心</span>
+        </p>
+        <div class="cover-badges anim" style="--d:.74s">
+          <span class="badge">2 天议程</span>
+          <span class="badge">40+ 分享嘉宾</span>
+          <span class="badge">限量 500 席</span>
+        </div>
+      </div>
+      <div class="scroll-hint anim" aria-hidden="true" style="--d:1s">
+        <span class="scroll-hint-text">上滑开启</span>
+        <span class="scroll-hint-arrow"></span>
+      </div>
+    </section>
+
+    <!-- 屏 2 · 为什么是现在 -->
+    <section class="screen screen-context">
+      <div class="screen-bg" aria-hidden="true" style="background-image:url('images/bg-grid.png')"></div>
+      <div class="screen-body">
+        <p class="eyebrow anim" style="--d:.1s">WHY NOW</p>
+        <h2 class="section-title anim" style="--d:.22s">为什么是现在</h2>
+        <ul class="keyword-list">
+          <li class="keyword anim" style="--d:.38s">
+            <span class="keyword-no">01</span>
+            <div class="keyword-text">
+              <h3>大模型成熟</h3>
+              <p>推理、规划与工具调用能力集体越过临界点,Agent 第一次具备了在真实生产环境中独立完成闭环任务的能力。</p>
+            </div>
+          </li>
+          <li class="keyword anim" style="--d:.54s">
+            <span class="keyword-no">02</span>
+            <div class="keyword-text">
+              <h3>场景爆发</h3>
+              <p>办公、电商、客服、开发……那些过去被认为「必须有人盯」的工作流,正在被 Agent 成批地接管与重写。</p>
+            </div>
+          </li>
+          <li class="keyword anim" style="--d:.7s">
+            <span class="keyword-no">03</span>
+            <div class="keyword-text">
+              <h3>生态重构</h3>
+              <p>从模型协议到分发平台,从计费模式到组织形态,整个行业的游戏规则都在加速收敛,新秩序将在 2026 年成形。</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 屏 3 · 行业数据 -->
+    <section class="screen screen-stats">
+      <div class="screen-bg" aria-hidden="true" style="background-image:url('images/bg-contour.png')"></div>
+      <div class="screen-body">
+        <p class="eyebrow anim" style="--d:.05s">INDUSTRY DATA</p>
+        <h2 class="section-title anim" style="--d:.15s">浪潮的规模</h2>
+        <div class="stats-grid">
+          <div class="stat-card anim" style="--d:.3s">
+            <p class="stat-num"><span class="count" data-prefix="¥" data-target="470" data-suffix="亿">¥0亿</span></p>
+            <p class="stat-label">2026 年中国 Agent 市场规模,三年内翻了两番</p>
+          </div>
+          <div class="stat-card anim" style="--d:.42s">
+            <p class="stat-num"><span class="count" data-prefix="" data-target="78" data-suffix="%">0%</span></p>
+            <p class="stat-label">头部互联网企业已在核心业务中启动 Agent 试点</p>
+          </div>
+          <div class="stat-card anim" style="--d:.54s">
+            <p class="stat-num"><span class="count" data-prefix="" data-target="3.2" data-suffix="×" data-decimal="1">0×</span></p>
+            <p class="stat-label">企业级 Agent 部署量的年复合增长率</p>
+          </div>
+          <div class="stat-card anim" style="--d:.66s">
+            <p class="stat-num"><span class="count" data-prefix="" data-target="500" data-suffix="+">0+</span></p>
+            <p class="stat-label">本届参会的互联网企业、机构与开发者团队</p>
+          </div>
+        </div>
+        <p class="stats-source anim" style="--d:.8s">数据来源:组委会联合调研 · 2026 年 11 月</p>
+      </div>
+    </section>
+
+    <!-- 屏 4 · 议程 · 上午 -->
+    <section class="screen screen-agenda">
+      <div class="screen-bg" aria-hidden="true" style="background-image:url('images/bg-grid.png')"></div>
+      <div class="screen-body">
+        <p class="eyebrow anim" style="--d:.05s">AGENDA · AM</p>
+        <h2 class="section-title anim" style="--d:.15s">大会议程 <span class="title-note">12.18 上午</span></h2>
+        <div class="agenda-banner anim" style="--d:.25s">
+          <img src="images/banner-timeline.png" alt="议程时间线" width="3136" height="1344" loading="lazy">
+        </div>
+        <ol class="timeline">
+          <li class="timeline-item anim" style="--d:.36s">
+            <span class="timeline-time">09:00</span>
+            <div class="timeline-card">
+              <h3>签到入场</h3>
+              <p>凭电子票二维码核验入场,领取参会手册与定制周边</p>
+            </div>
+          </li>
+          <li class="timeline-item anim" style="--d:.48s">
+            <span class="timeline-time">09:30</span>
+            <div class="timeline-card">
+              <h3>开幕主旨</h3>
+              <p>Agent 元年:从工具到数字员工,重新定义人机协作的下一个十年</p>
+            </div>
+          </li>
+          <li class="timeline-item anim" style="--d:.6s">
+            <span class="timeline-time">10:30</span>
+            <div class="timeline-card">
+              <h3>技术主论坛</h3>
+              <p>多智能体协作、长程任务规划与 Agent 工程化的可靠性实践</p>
+            </div>
+          </li>
+          <li class="timeline-item anim" style="--d:.72s">
+            <span class="timeline-time">11:30</span>
+            <div class="timeline-card">
+              <h3>高峰对话</h3>
+              <p>Agent 的安全、治理与责任边界:平台、企业与监管的三方视角</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 屏 5 · 议程 · 下午 -->
+    <section class="screen screen-agenda-pm">
+      <div class="screen-bg" aria-hidden="true" style="background-image:url('images/bg-grid.png')"></div>
+      <div class="screen-body">
+        <p class="eyebrow anim" style="--d:.05s">AGENDA · PM</p>
+        <h2 class="section-title anim" style="--d:.15s">大会议程 <span class="title-note">12.18 下午</span></h2>
+        <ol class="timeline">
+          <li class="timeline-item anim" style="--d:.3s">
+            <span class="timeline-time">14:00</span>
+            <div class="timeline-card">
+              <h3>行业分论坛</h3>
+              <p>金融、电商、制造三大赛道平行开讲,还原真实落地路径与踩坑经验</p>
+            </div>
+          </li>
+          <li class="timeline-item anim" style="--d:.42s">
+            <span class="timeline-time">15:30</span>
+            <div class="timeline-card">
+              <h3>Demo Day</h3>
+              <p>十二款未公开 Agent 新品现场首秀,观众投票选出年度最受期待产品</p>
+            </div>
+          </li>
+          <li class="timeline-item anim" style="--d:.54s">
+            <span class="timeline-time">16:30</span>
+            <div class="timeline-card">
+              <h3>百人圆桌</h3>
+              <p>Agent 时代的组织与人才:哪些岗位会消失,哪些能力更值钱</p>
+            </div>
+          </li>
+          <li class="timeline-item anim" style="--d:.66s">
+            <span class="timeline-time">17:30</span>
+            <div class="timeline-card">
+              <h3>闭幕酒会</h3>
+              <p>自由交流与投融资对接专场,带着名片来,带着合作走</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 屏 6 · 三大亮点 -->
+    <section class="screen screen-highlights">
+      <div class="screen-bg" aria-hidden="true" style="background-image:url('images/bg-grid.png')"></div>
+      <div class="screen-body">
+        <p class="eyebrow anim" style="--d:.05s">HIGHLIGHTS</p>
+        <h2 class="section-title anim" style="--d:.15s">三大亮点</h2>
+        <ul class="highlight-list">
+          <li class="highlight-card anim" style="--d:.28s">
+            <div class="highlight-thumb"><img src="images/highlight-launch.png" alt="Agent 产品首秀" width="2048" height="2048" loading="lazy"></div>
+            <div class="highlight-text">
+              <h3>Agent 产品首秀</h3>
+              <p>十余款尚未公开的 Agent 产品选择在此首发,覆盖办公、创作、开发、客服四大场景,你可以在现场亲手体验下一代人机交互的雏形。</p>
+              <div class="tag-row"><span class="tag">新品首发</span><span class="tag">现场体验</span></div>
+            </div>
+          </li>
+          <li class="highlight-card anim" style="--d:.44s">
+            <div class="highlight-thumb"><img src="images/highlight-roundtable.png" alt="百人圆桌" width="2048" height="2048" loading="lazy"></div>
+            <div class="highlight-text">
+              <h3>百人圆桌</h3>
+              <p>拒绝照本宣科的大会演讲。与一线操盘手同席而论,小范围深聊真问题、真数据、真方法,每位参与者都有发问与交锋的机会。</p>
+              <div class="tag-row"><span class="tag">限额报名</span><span class="tag">闭门深聊</span></div>
+            </div>
+          </li>
+          <li class="highlight-card anim" style="--d:.6s">
+            <div class="highlight-thumb"><img src="images/highlight-invest.png" alt="投融资对接" width="2048" height="2048" loading="lazy"></div>
+            <div class="highlight-text">
+              <h3>投融资对接</h3>
+              <p>三十余家一线机构合伙人现场坐镇,会前完成项目初筛与匹配,现场直接深聊,让优质项目与资本高效相遇。</p>
+              <div class="tag-row"><span class="tag">30+ 机构</span><span class="tag">闭门对接</span></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 屏 7 · 参会信息 -->
+    <section class="screen screen-info">
+      <div class="screen-bg" aria-hidden="true" style="background-image:url('images/bg-contour.png')"></div>
+      <div class="screen-body">
+        <p class="eyebrow anim" style="--d:.05s">INFORMATION</p>
+        <h2 class="section-title anim" style="--d:.15s">参会信息</h2>
+        <div class="info-grid">
+          <div class="info-card anim" style="--d:.3s">
+            <span class="info-label">时间</span>
+            <p class="info-value">2026 年 12 月 18 — 19 日</p>
+            <p class="info-extra">首日 09:00 — 18:00 全体议程 · 次日为 VIP 闭门工作坊</p>
+          </div>
+          <div class="info-card anim" style="--d:.42s">
+            <span class="info-label">地点</span>
+            <p class="info-value">上海 · 西岸艺术中心</p>
+            <p class="info-extra">徐汇区龙腾大道 2555 号 · 地铁 11 号线云锦路站 2 号口</p>
+          </div>
+        </div>
+        <div class="ticket-table anim" style="--d:.56s">
+          <div class="ticket-row ticket-head">
+            <span>票种</span><span>价格</span><span>权益</span>
+          </div>
+          <div class="ticket-row">
+            <span>早鸟票</span><span class="ticket-price">¥59</span><span>首日全程 · 限量 200 张</span>
+          </div>
+          <div class="ticket-row">
+            <span>标准票</span><span class="ticket-price">¥89</span><span>首日全程 · 含资料包</span>
+          </div>
+          <div class="ticket-row">
+            <span>VIP 票</span><span class="ticket-price">¥139</span><span>两日通票 · 前排席位</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 屏 8 · 尾页 CTA -->
+    <section class="screen screen-cta">
+      <div class="screen-bg" aria-hidden="true" style="background-image:url('images/bg-portal.png')"></div>
+      <div class="screen-body">
+        <h2 class="cta-title anim" style="--d:.15s">与时代同席</h2>
+        <p class="cta-sub anim" style="--d:.3s">限量 500 席 · 预约从速</p>
+        <button class="cta-button anim" style="--d:.45s" type="button">预约席位</button>
+        <div class="qr-block anim" style="--d:.6s">
+          <div class="qr-placeholder" aria-label="报名二维码"></div>
+          <p class="qr-text">扫码直达报名页</p>
+        </div>
+        <div class="cta-contact anim" style="--d:.72s">
+          <p>商务合作:lxc@shili.cn</p>
+          <p>咨询热线:400-800-0000(工作日 9:00 — 18:00)</p>
+        </div>
+        <p class="organizer anim" style="--d:.84s">主办 · Agent 视界组委会</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
